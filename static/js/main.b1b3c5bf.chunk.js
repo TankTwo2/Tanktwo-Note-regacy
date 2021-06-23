@@ -1,0 +1,2 @@
+(this["webpackJsonpttb-frontend"]=this["webpackJsonpttb-frontend"]||[]).push([[0],{20:function(n,t,e){},30:function(n,t,e){"use strict";e.r(t);e(0);var a=e(14),c=e(1),o=e(13),s=e.n(o),i=(e(20),e(7));var r=function(){return Object(i.jsx)("div",{className:"App",children:Object(i.jsx)("div",{className:"main-container",children:"Tanktwo's Blog"})})};s.a.render(Object(i.jsx)(a.a,{basename:window.location.pathname||"",children:Object(i.jsx)(c.a,{exact:!0,path:"/",component:r})}),document.getElementById("root"))}},[[30,1,2]]]);
+//# sourceMappingURL=main.b1b3c5bf.chunk.js.map
