@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/ttb_frontend/static/css/main.9d5b29c0.chunk.css",
-    "main.js": "/ttb_frontend/static/js/main.5f5a73cf.chunk.js",
-    "main.js.map": "/ttb_frontend/static/js/main.5f5a73cf.chunk.js.map",
+    "main.css": "/ttb_frontend/static/css/main.942e29ee.chunk.css",
+    "main.js": "/ttb_frontend/static/js/main.767176d5.chunk.js",
+    "main.js.map": "/ttb_frontend/static/js/main.767176d5.chunk.js.map",
     "runtime-main.js": "/ttb_frontend/static/js/runtime-main.eb515292.js",
     "runtime-main.js.map": "/ttb_frontend/static/js/runtime-main.eb515292.js.map",
     "static/js/2.73d26f8a.chunk.js": "/ttb_frontend/static/js/2.73d26f8a.chunk.js",
@@ -10,14 +10,13 @@
     "static/js/3.180731d5.chunk.js": "/ttb_frontend/static/js/3.180731d5.chunk.js",
     "static/js/3.180731d5.chunk.js.map": "/ttb_frontend/static/js/3.180731d5.chunk.js.map",
     "index.html": "/ttb_frontend/index.html",
-    "static/css/main.9d5b29c0.chunk.css.map": "/ttb_frontend/static/css/main.9d5b29c0.chunk.css.map",
-    "static/js/2.73d26f8a.chunk.js.LICENSE.txt": "/ttb_frontend/static/js/2.73d26f8a.chunk.js.LICENSE.txt",
-    "static/media/logo.6ce24c58.svg": "/ttb_frontend/static/media/logo.6ce24c58.svg"
+    "static/css/main.942e29ee.chunk.css.map": "/ttb_frontend/static/css/main.942e29ee.chunk.css.map",
+    "static/js/2.73d26f8a.chunk.js.LICENSE.txt": "/ttb_frontend/static/js/2.73d26f8a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.eb515292.js",
     "static/js/2.73d26f8a.chunk.js",
-    "static/css/main.9d5b29c0.chunk.css",
-    "static/js/main.5f5a73cf.chunk.js"
+    "static/css/main.942e29ee.chunk.css",
+    "static/js/main.767176d5.chunk.js"
   ]
 }
