@@ -7,6 +7,11 @@ function App() {
 
   }
 
+  const condition = true;
+  if(condition && condition) {
+      console.log('hello world!');
+  }
+
   return (
     <div className="App">
       <header className="App-header">
