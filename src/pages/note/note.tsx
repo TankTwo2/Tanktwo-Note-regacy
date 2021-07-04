@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import Card from './components/Card'
+import WriteNote from './components/WriteNote'
 
 const tempTagList = ['JAVASCRIPT', 'JAVA', 'REACT']
 
 export default function Note() {
     const [tagList, setTagList] = useState<string[]>([])
+    const [openWrite, setOpenWrite] = useState<boolean>(false)
 
     useEffect(() => {
         setTagList(tempTagList)
@@ -12,6 +14,7 @@ export default function Note() {
 
     return (
         <div>
+            <WriteNote isActive={openWrite} setIsActive={setOpenWrite}/>
             <div className="columns">
                 <div className="column">
                     <nav
@@ -20,18 +23,21 @@ export default function Note() {
                     >
                         <ul>
                             <li>
-                                <a href="#total">TOTAL &nbsp;</a>
+                                <a href="#total">TOTAL</a>
                             </li>
                             {tagList.map((tag) => (
                                 <li>
-                                    <a href={`#${tag}`}>{tag} &nbsp;</a>
+                                    <a href={`#${tag}`}>{tag}</a>
                                 </li>
                             ))}
                         </ul>
                     </nav>
                 </div>
                 <div className="column is-1">
-                    <button className="button is-primary is-rounded">
+                    <button
+                        className="button is-primary is-rounded"
+                        onClick={() => setOpenWrite(!openWrite)}
+                    >
                         WRITE
                     </button>
                 </div>
