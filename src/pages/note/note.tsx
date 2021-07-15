@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import Card from './components/Card'
 import WriteNote from './components/WriteNote'
 
@@ -8,13 +8,22 @@ export default function Note() {
     const [tagList, setTagList] = useState<string[]>([])
     const [openWrite, setOpenWrite] = useState<boolean>(false)
 
+    const baseUrl = process.env.REACT_APP_API_URL
+
+    const getNoteListCB = useCallback(getNoteList, [baseUrl])
+
+    async function getNoteList() {
+        fetch(baseUrl + 'note')
+    }
+
     useEffect(() => {
         setTagList(tempTagList)
-    }, [])
+        getNoteListCB()
+    }, [getNoteListCB])
 
     return (
         <div>
-            <WriteNote isActive={openWrite} setIsActive={setOpenWrite}/>
+            <WriteNote isActive={openWrite} setIsActive={setOpenWrite} />
             <div className="columns">
                 <div className="column">
                     <nav

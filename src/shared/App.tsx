@@ -6,6 +6,8 @@ import Home from '../pages/home'
 import Nav from '../layout/nav'
 
 function App() {
+    console.log(process.env)
+
     return (
         <div className="App">
             <div className="container is-fluid">

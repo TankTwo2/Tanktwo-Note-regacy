@@ -32,7 +32,7 @@ export default function WriteNote({
     async function onSubmitNoteData(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
         const res = await fetch(
-            'https://tanktwo.synology.me:5001/ttb/note/write',
+            'https://tanktwo.synology.me:5001/note',
             {
                 method: 'POST',
                 body: JSON.stringify(noteData),
