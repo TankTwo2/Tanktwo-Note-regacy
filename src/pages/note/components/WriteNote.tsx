@@ -1,4 +1,6 @@
 import React, { Dispatch, SetStateAction, useState } from 'react'
+import MultiSelect from '../../../components/multi-select'
+import { baseUrl } from '../../../shared/App'
 
 interface NoteDataInterFace {
     title: string
@@ -17,6 +19,7 @@ export default function WriteNote({
     const [noteData, setNoteData] = useState<NoteDataInterFace>(
         {} as NoteDataInterFace
     )
+    const [tagInputValue, setTagInputValue] = useState<string>('')
 
     function onActiveControl() {
         setIsActive(!isActive)
@@ -29,15 +32,11 @@ export default function WriteNote({
         })
     }
 
-    async function onSubmitNoteData(e: React.FormEvent<HTMLFormElement>) {
-        e.preventDefault()
-        const res = await fetch(
-            'https://tanktwo.synology.me:5001/note',
-            {
-                method: 'POST',
-                body: JSON.stringify(noteData),
-            }
-        )
+    async function onSubmitNoteData() {
+        const res = await fetch(baseUrl + 'note', {
+            method: 'POST',
+            body: JSON.stringify(noteData),
+        })
         if (res.status >= 400) {
             alert(`error : ${res.status}`)
         } else {
@@ -47,11 +46,11 @@ export default function WriteNote({
 
     return (
         <>
-            <form
-                className={`modal ${isActive && 'is-active'}`}
-                onSubmit={onSubmitNoteData}
-            >
-                <div className="modal-background"></div>
+            <div className={`modal ${isActive && 'is-active'}`}>
+                <div
+                    className="modal-background"
+                    onClick={onActiveControl}
+                ></div>
                 <div className="modal-card">
                     <header className="modal-card-head">
                         <p className="modal-card-title">
@@ -72,7 +71,30 @@ export default function WriteNote({
                             onClick={onActiveControl}
                         ></button>
                     </header>
-                    <section className="modal-card-body">Content</section>
+                    <section className="modal-card-body">
+                        <div className="field is-horizontal">
+                            Tags : &nbsp;
+                            <div className="field-body">
+                                <div className="field">
+                                    <input
+                                        className="input is-small"
+                                        type="tags"
+                                        placeholder="Add Tag"
+                                        value={tagInputValue}
+                                        onChange={(e) =>
+                                            setTagInputValue(e.target.value)
+                                        }
+                                    />
+                                    <MultiSelect
+                                        optionList={['test1', 'test2']}
+                                        value={['value1', 'value2']}
+                                        onChange={() => {}}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        Content
+                    </section>
                     <footer className="modal-card-foot">
                         <input
                             className="input is-warning mr-3"
@@ -84,7 +106,8 @@ export default function WriteNote({
                         <button
                             className="button is-success"
                             disabled={password !== 'notepw'}
-                            type="submit"
+                            type="button"
+                            onClick={onSubmitNoteData}
                         >
                             Save
                         </button>
@@ -97,7 +120,7 @@ export default function WriteNote({
                         </button>
                     </footer>
                 </div>
-            </form>
+            </div>
         </>
     )
 }

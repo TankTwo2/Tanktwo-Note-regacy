@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
+import { baseUrl } from '../../shared/App'
 import Card from './components/Card'
 import WriteNote from './components/WriteNote'
 
@@ -8,9 +9,9 @@ export default function Note() {
     const [tagList, setTagList] = useState<string[]>([])
     const [openWrite, setOpenWrite] = useState<boolean>(false)
 
-    const baseUrl = process.env.REACT_APP_API_URL
+    
 
-    const getNoteListCB = useCallback(getNoteList, [baseUrl])
+    const getNoteListCB = useCallback(getNoteList, [])
 
     async function getNoteList() {
         fetch(baseUrl + 'note')

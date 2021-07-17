@@ -52,5 +52,5 @@
     "@types/react-router-dom": "^5.1.7",
     "gh-pages": "^3.2.3"
   },
-  "proxy": "http://localhost:4001/"
+  "proxy": "https://tanktwo2.github.io/"
 }
