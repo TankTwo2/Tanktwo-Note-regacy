@@ -33,16 +33,16 @@ export default function MultiSelect({
         <>
             <div
                 id="statusDiv"
-                className="column is-fullwidth"
+                className="column"
                 style={{
                     border: '1px solid transparent',
                     borderColor: '#dbdbdb',
                     borderRadius: 4,
-                    minHeight: 40,
+                    minHeight: 30,
                     cursor: 'pointer',
                     padding: 2,
                     zIndex: 1,
-                    maxHeight: 100,
+                    maxHeight: 50,
                     overflowY: 'auto',
                 }}
                 onClick={() => setViewSelect(true)}
@@ -78,7 +78,7 @@ export default function MultiSelect({
             </div>
             {viewSelect && (
                 <div
-                    className="select is-multiple"
+                    className="select is-multiple is-small"
                     style={{
                         zIndex: 2,
                         backgroundColor: 'white',

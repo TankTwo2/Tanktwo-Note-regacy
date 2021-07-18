@@ -9,8 +9,6 @@ export default function Note() {
     const [tagList, setTagList] = useState<string[]>([])
     const [openWrite, setOpenWrite] = useState<boolean>(false)
 
-    
-
     const getNoteListCB = useCallback(getNoteList, [])
 
     async function getNoteList() {
@@ -32,11 +30,11 @@ export default function Note() {
                         aria-label="breadcrumbs"
                     >
                         <ul>
-                            <li>
+                            <li key="total">
                                 <a href="#total">TOTAL</a>
                             </li>
-                            {tagList.map((tag) => (
-                                <li>
+                            {tagList.map((tag, i) => (
+                                <li key={i}>
                                     <a href={`#${tag}`}>{tag}</a>
                                 </li>
                             ))}
