@@ -3,6 +3,7 @@ import ReactQuill from 'react-quill'
 import TagInput from '../../../components/tag-input'
 import { baseUrl } from '../../../shared/App'
 import 'react-quill/dist/quill.snow.css'
+import cFetch from '../../../shared/fetch'
 
 interface Tags {
     [index: string]: boolean
@@ -86,23 +87,12 @@ export default function WriteNote({
     }
 
     async function onSubmitNoteData() {
-        const res = await fetch(baseUrl + 'note', {
-            method: 'POST',
-            body: JSON.stringify({
-                title: noteData.title,
-                content: chagneEditor,
-                tag: Object.keys(tagInputValue),
-            }),
-            headers: {
-                'Content-Type': 'application/json',
-                // 'Content-Type': 'application/x-www-form-urlencoded',
-            },
+        cFetch('POST', 'note', {
+            title: noteData.title,
+            content: chagneEditor,
+            tag: Object.keys(tagInputValue),
         })
-        if (res.status >= 400) {
-            alert(`error : ${res.status}`)
-        } else {
-            alert(`succcess`)
-        }
+        setIsActive(!isActive)
     }
 
     return (
