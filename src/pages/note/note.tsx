@@ -1,24 +1,27 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { baseUrl } from '../../shared/App'
+import cFetch from '../../shared/fetch'
 import Card from './components/Card'
 import WriteNote from './components/WriteNote'
-
-const tempTagList = ['JAVASCRIPT', 'JAVA', 'REACT']
 
 export default function Note() {
     const [tagList, setTagList] = useState<string[]>([])
     const [openWrite, setOpenWrite] = useState<boolean>(false)
 
     const getNoteListCB = useCallback(getNoteList, [])
+    const getTagListCB = useCallback(getTagList, [])
 
     async function getNoteList() {
-        fetch(baseUrl + 'note')
+        cFetch('GET', 'note', undefined, false)
+    }
+
+    async function getTagList() {
+        setTagList(await cFetch('GET', 'note/tagList', undefined, false))
     }
 
     useEffect(() => {
-        setTagList(tempTagList)
         getNoteListCB()
-    }, [getNoteListCB])
+        getTagListCB()
+    }, [getNoteListCB, getTagListCB])
 
     return (
         <div>

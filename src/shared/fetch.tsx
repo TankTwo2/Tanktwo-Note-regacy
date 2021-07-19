@@ -3,7 +3,8 @@ import { baseUrl } from '../shared/App'
 export default async function cFetch(
     type: 'GET' | 'POST' | 'PUT' | 'DELETE',
     api: string,
-    body: { [index: string]: any }
+    body?: { [index: string]: any },
+    disableMessage?: boolean
 ) {
     let res: any
     if (type === 'GET') {
@@ -11,7 +12,7 @@ export default async function cFetch(
     } else {
         fetch(baseUrl + api, {
             method: type,
-            body: JSON.stringify(body),
+            body: body && JSON.stringify(body),
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -20,7 +21,7 @@ export default async function cFetch(
 
     if (res.status >= 400) {
         alert(`error : ${res.status}`)
-    } else {
+    } else if (res.status < 400 && disableMessage) {
         alert(`succcess`)
     }
 
