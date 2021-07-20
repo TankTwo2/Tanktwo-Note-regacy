@@ -1,20 +1,15 @@
 import React from 'react'
+import { NoteDto } from '../note'
 
-export default function Card() {
+export default function Card({ noteList }: { noteList: NoteDto }) {
     return (
         <>
             <div className="card">
                 <header className="card-header">
-                    <p className="card-header-title">Card header</p>
+                    <p className="card-header-title">{noteList.title}</p>
                 </header>
                 <div className="card-content">
-                    <div className="content">
-                        Lorem ipsum leo risus, porta ac consectetur ac,
-                        vestibulum at eros. Donec id elit non mi porta gravida
-                        at eget metus. Cum sociis natoque penatibus et magnis
-                        dis parturient montes, nascetur ridiculus mus. Cras
-                        mattis consectetur purus sit amet fermentum.
-                    </div>
+                    <div className="content">{noteList.content}</div>
                 </div>
             </div>
         </>

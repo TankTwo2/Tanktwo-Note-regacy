@@ -1,7 +1,6 @@
 import React, { Dispatch, SetStateAction, useState } from 'react'
 import ReactQuill from 'react-quill'
 import TagInput from '../../../components/tag-input'
-import { baseUrl } from '../../../shared/App'
 import 'react-quill/dist/quill.snow.css'
 import cFetch from '../../../shared/fetch'
 

@@ -3,19 +3,34 @@ import cFetch from '../../shared/fetch'
 import Card from './components/Card'
 import WriteNote from './components/WriteNote'
 
+export interface NoteDto {
+    content: string
+    createdAt: string
+    modifiedAt: string
+    postNumber: number
+    tags: { id: string; tag: string }[]
+    title: string
+}
+
 export default function Note() {
     const [tagList, setTagList] = useState<string[]>([])
+    const [noteList, setNoteList] = useState<NoteDto[]>([])
     const [openWrite, setOpenWrite] = useState<boolean>(false)
 
     const getNoteListCB = useCallback(getNoteList, [])
     const getTagListCB = useCallback(getTagList, [])
 
     async function getNoteList() {
-        cFetch('GET', 'note', undefined, false)
+        setNoteList(await cFetch('GET', 'note', undefined, false))
     }
 
     async function getTagList() {
-        setTagList(await cFetch('GET', 'note/tagList', undefined, false))
+        setTagList(
+            (await cFetch('GET', 'note/tagList', undefined, false)).slice(
+                undefined,
+                5
+            )
+        )
     }
 
     useEffect(() => {
@@ -54,14 +69,11 @@ export default function Note() {
                 </div>
             </div>
             <div className="container">
-                <div className="columns">
-                    <div className="column">
-                        <Card />
+                {noteList.map((row) => (
+                    <div style={{ margin: '20px auto', width: '50%' }}>
+                        <Card noteList={row} />
                     </div>
-                    <div className="column">
-                        <Card />
-                    </div>
-                </div>
+                ))}
             </div>
         </div>
     )
