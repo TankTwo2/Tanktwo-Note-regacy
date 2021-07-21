@@ -12,8 +12,13 @@ export interface NoteDto {
     title: string
 }
 
+interface TagDto {
+    tag: string
+    count: string
+}
+
 export default function Note() {
-    const [tagList, setTagList] = useState<string[]>([])
+    const [tagList, setTagList] = useState<TagDto[]>([])
     const [noteList, setNoteList] = useState<NoteDto[]>([])
     const [openWrite, setOpenWrite] = useState<boolean>(false)
     const [currentTag, setCurrentTag] = useState<string>('TOTAL')
@@ -26,12 +31,11 @@ export default function Note() {
     }
 
     async function getTagList() {
-        setTagList(
-            (await cFetch('GET', 'note/tagList', undefined, false)).slice(
-                undefined,
-                5
-            )
-        )
+        const tist = (
+            await cFetch('GET', 'note/tagList', undefined, false)
+        ).slice(undefined, 5)
+        console.log(tist)
+        setTagList(tist)
     }
 
     useEffect(() => {
@@ -46,58 +50,6 @@ export default function Note() {
     return (
         <div>
             <WriteNote isActive={openWrite} setIsActive={setOpenWrite} />
-
-            {/* <div className="columns">
-                <div className="column">
-                    <nav
-                        className="breadcrumb is-medium ml-4"
-                        aria-label="breadcrumbs"
-                    >
-                        <ul>
-                            <li key="total">
-                                <span
-                                    style={{
-                                        color:
-                                            currentTag === 'TOTAL'
-                                                ? '#00d2b4'
-                                                : 'black',
-                                        cursor: 'pointer',
-                                        padding: '0px 15px 0px 15px',
-                                    }}
-                                    onClick={() => handleCurrentChange('TOTAL')}
-                                >
-                                    TOTAL
-                                </span>
-                            </li>
-                            {tagList.map((tag, i) => (
-                                <li key={i}>
-                                    <span
-                                        style={{
-                                            color:
-                                                currentTag === tag
-                                                    ? '#00d2b4'
-                                                    : 'black',
-                                            cursor: 'pointer',
-                                            padding: '0px 15px 0px 15px',
-                                        }}
-                                        onClick={() => handleCurrentChange(tag)}
-                                    >
-                                        {tag}
-                                    </span>
-                                </li>
-                            ))}
-                        </ul>
-                    </nav>
-                </div>
-                <div className="column is-1">
-                    <button
-                        className="button is-primary is-rounded"
-                        onClick={() => setOpenWrite(!openWrite)}
-                    >
-                        WRITE
-                    </button>
-                </div>
-            </div> */}
             <div className="container">
                 <div className="columns">
                     <div className="column is-2">
@@ -125,23 +77,34 @@ export default function Note() {
                                 {tagList.map((tag, i) => (
                                     <li key={i}>
                                         <a
-                                            href={`#${tag}`}
+                                            href={`#${tag.tag}`}
                                             style={{
                                                 color:
-                                                    currentTag === tag
+                                                    currentTag === tag.tag
                                                         ? '#00d2b4'
                                                         : 'black',
                                                 cursor: 'pointer',
                                                 padding: '2px 15px 2px 15px',
                                             }}
                                             onClick={() =>
-                                                handleCurrentChange(tag)
+                                                handleCurrentChange(tag.tag)
                                             }
                                         >
-                                            {tag}
+                                            {`${tag.tag} (${tag.count})`}
                                         </a>
                                     </li>
                                 ))}
+                            </ul>
+                            <p className="menu-label">Administration</p>
+                            <ul className="menu-list">
+                                <li>
+                                    <a
+                                        href={'#write'}
+                                        onClick={() => setOpenWrite(true)}
+                                    >
+                                        Write Note
+                                    </a>
+                                </li>
                             </ul>
                         </aside>
                     </div>
