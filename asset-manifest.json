@@ -1,20 +1,23 @@
 {
   "files": {
-    "main.css": "/ttb_frontend/static/css/main.41c05580.chunk.css",
-    "main.js": "/ttb_frontend/static/js/main.5d2e4f24.chunk.js",
-    "main.js.map": "/ttb_frontend/static/js/main.5d2e4f24.chunk.js.map",
+    "main.css": "/ttb_frontend/static/css/main.623162cc.chunk.css",
+    "main.js": "/ttb_frontend/static/js/main.6d32099d.chunk.js",
+    "main.js.map": "/ttb_frontend/static/js/main.6d32099d.chunk.js.map",
     "runtime-main.js": "/ttb_frontend/static/js/runtime-main.81c3a25e.js",
     "runtime-main.js.map": "/ttb_frontend/static/js/runtime-main.81c3a25e.js.map",
-    "static/js/2.62d29542.chunk.js": "/ttb_frontend/static/js/2.62d29542.chunk.js",
-    "static/js/2.62d29542.chunk.js.map": "/ttb_frontend/static/js/2.62d29542.chunk.js.map",
+    "static/css/2.f83b9687.chunk.css": "/ttb_frontend/static/css/2.f83b9687.chunk.css",
+    "static/js/2.800535ea.chunk.js": "/ttb_frontend/static/js/2.800535ea.chunk.js",
+    "static/js/2.800535ea.chunk.js.map": "/ttb_frontend/static/js/2.800535ea.chunk.js.map",
     "index.html": "/ttb_frontend/index.html",
-    "static/css/main.41c05580.chunk.css.map": "/ttb_frontend/static/css/main.41c05580.chunk.css.map",
-    "static/js/2.62d29542.chunk.js.LICENSE.txt": "/ttb_frontend/static/js/2.62d29542.chunk.js.LICENSE.txt"
+    "static/css/2.f83b9687.chunk.css.map": "/ttb_frontend/static/css/2.f83b9687.chunk.css.map",
+    "static/css/main.623162cc.chunk.css.map": "/ttb_frontend/static/css/main.623162cc.chunk.css.map",
+    "static/js/2.800535ea.chunk.js.LICENSE.txt": "/ttb_frontend/static/js/2.800535ea.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.81c3a25e.js",
-    "static/js/2.62d29542.chunk.js",
-    "static/css/main.41c05580.chunk.css",
-    "static/js/main.5d2e4f24.chunk.js"
+    "static/css/2.f83b9687.chunk.css",
+    "static/js/2.800535ea.chunk.js",
+    "static/css/main.623162cc.chunk.css",
+    "static/js/main.6d32099d.chunk.js"
   ]
 }
