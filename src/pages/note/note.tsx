@@ -16,6 +16,7 @@ export default function Note() {
     const [tagList, setTagList] = useState<string[]>([])
     const [noteList, setNoteList] = useState<NoteDto[]>([])
     const [openWrite, setOpenWrite] = useState<boolean>(false)
+    const [currentTag, setCurrentTag] = useState<string>('TOTAL')
 
     const getNoteListCB = useCallback(getNoteList, [])
     const getTagListCB = useCallback(getTagList, [])
@@ -38,10 +39,15 @@ export default function Note() {
         getTagListCB()
     }, [getNoteListCB, getTagListCB])
 
+    function handleCurrentChange(type: string) {
+        setCurrentTag(type)
+    }
+
     return (
         <div>
             <WriteNote isActive={openWrite} setIsActive={setOpenWrite} />
-            <div className="columns">
+
+            {/* <div className="columns">
                 <div className="column">
                     <nav
                         className="breadcrumb is-medium ml-4"
@@ -49,11 +55,35 @@ export default function Note() {
                     >
                         <ul>
                             <li key="total">
-                                <a href="#total">TOTAL</a>
+                                <span
+                                    style={{
+                                        color:
+                                            currentTag === 'TOTAL'
+                                                ? '#00d2b4'
+                                                : 'black',
+                                        cursor: 'pointer',
+                                        padding: '0px 15px 0px 15px',
+                                    }}
+                                    onClick={() => handleCurrentChange('TOTAL')}
+                                >
+                                    TOTAL
+                                </span>
                             </li>
                             {tagList.map((tag, i) => (
                                 <li key={i}>
-                                    <a href={`#${tag}`}>{tag}</a>
+                                    <span
+                                        style={{
+                                            color:
+                                                currentTag === tag
+                                                    ? '#00d2b4'
+                                                    : 'black',
+                                            cursor: 'pointer',
+                                            padding: '0px 15px 0px 15px',
+                                        }}
+                                        onClick={() => handleCurrentChange(tag)}
+                                    >
+                                        {tag}
+                                    </span>
                                 </li>
                             ))}
                         </ul>
@@ -67,13 +97,75 @@ export default function Note() {
                         WRITE
                     </button>
                 </div>
-            </div>
+            </div> */}
             <div className="container">
-                {noteList.map((row) => (
-                    <div style={{ margin: '20px auto', width: '50%' }}>
-                        <Card noteList={row} />
+                <div className="columns">
+                    <div className="column is-2">
+                        <aside className="menu">
+                            <p className="menu-label">Tag</p>
+                            <ul className="menu-list">
+                                <li>
+                                    <a
+                                        href={`#TOTAL`}
+                                        style={{
+                                            color:
+                                                currentTag === 'TOTAL'
+                                                    ? '#00d2b4'
+                                                    : 'black',
+                                            cursor: 'pointer',
+                                            padding: '2px 15px 2px 15px',
+                                        }}
+                                        onClick={() =>
+                                            handleCurrentChange('TOTAL')
+                                        }
+                                    >
+                                        TOTAL
+                                    </a>
+                                </li>
+                                {tagList.map((tag, i) => (
+                                    <li key={i}>
+                                        <a
+                                            href={`#${tag}`}
+                                            style={{
+                                                color:
+                                                    currentTag === tag
+                                                        ? '#00d2b4'
+                                                        : 'black',
+                                                cursor: 'pointer',
+                                                padding: '2px 15px 2px 15px',
+                                            }}
+                                            onClick={() =>
+                                                handleCurrentChange(tag)
+                                            }
+                                        >
+                                            {tag}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </aside>
                     </div>
-                ))}
+                    <div className="column">
+                        {(currentTag === 'TOTAL'
+                            ? noteList
+                            : noteList.filter(
+                                  (row) =>
+                                      row.tags.filter(
+                                          (r) => r.tag === currentTag
+                                      ).length > 0
+                              )
+                        ).map((row) => (
+                            <div
+                                style={{
+                                    margin: '20px auto',
+                                    width: '70%',
+                                }}
+                            >
+                                <Card noteList={row} />
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </div>
         </div>
     )
