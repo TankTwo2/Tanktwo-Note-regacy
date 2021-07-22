@@ -34,7 +34,6 @@ export default function Note() {
         const tist = (
             await cFetch('GET', 'note/tagList', undefined, false)
         ).slice(undefined, 5)
-        console.log(tist)
         setTagList(tist)
     }
 

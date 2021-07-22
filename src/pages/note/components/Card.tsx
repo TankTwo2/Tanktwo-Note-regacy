@@ -2,6 +2,7 @@ import React from 'react'
 import { NoteDto } from '../note'
 
 export default function Card({ noteList }: { noteList: NoteDto }) {
+
     return (
         <>
             <div className="card">
@@ -20,9 +21,6 @@ export default function Card({ noteList }: { noteList: NoteDto }) {
                         {noteList.modifiedAt.slice(0, 10)}
                     </p>
                 </header>
-                <div className="card-content">
-                    <div className="content">{noteList.content}</div>
-                </div>
             </div>
         </>
     )
