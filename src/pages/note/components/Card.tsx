@@ -1,25 +1,32 @@
 import React from 'react'
 import { NoteDto } from '../note'
 
-export default function Card({ noteList }: { noteList: NoteDto }) {
-
+export default function Card({
+    note,
+    setIsContent,
+}: {
+    note: NoteDto
+    setIsContent: React.Dispatch<React.SetStateAction<NoteDto | null>>
+}) {
     return (
         <>
-            <div className="card">
+            <div
+                className="card"
+                onClick={() => setIsContent(note)}
+                style={{ cursor: 'pointer' }}
+            >
                 <header className="card-header">
-                    <p className="card-header-title">{noteList.title}</p>
+                    <p className="card-header-title">{note.title}</p>
                     <p style={{ margin: 10 }}>
-                        {noteList &&
-                            noteList.tags.map((row) => (
+                        {note &&
+                            note.tags.map((row) => (
                                 <small>
                                     <a href={`#${row.tag}`}>#{row.tag}</a>&nbsp;
                                 </small>
                             ))}
                     </p>
                     <br />
-                    <p style={{ margin: 10 }}>
-                        {noteList.modifiedAt.slice(0, 10)}
-                    </p>
+                    <p style={{ margin: 10 }}>{note.modifiedAt.slice(0, 10)}</p>
                 </header>
             </div>
         </>

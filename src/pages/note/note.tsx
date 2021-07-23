@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import cFetch from '../../shared/fetch'
 import Card from './components/Card'
+import NoteContent from './components/NoteContent'
 import WriteNote from './components/WriteNote'
 
 export interface NoteDto {
@@ -22,6 +23,7 @@ export default function Note() {
     const [noteList, setNoteList] = useState<NoteDto[]>([])
     const [openWrite, setOpenWrite] = useState<boolean>(false)
     const [currentTag, setCurrentTag] = useState<string>('TOTAL')
+    const [isContent, setIsContent] = useState<NoteDto | null>(null)
 
     const getNoteListCB = useCallback(getNoteList, [])
     const getTagListCB = useCallback(getTagList, [])
@@ -66,9 +68,10 @@ export default function Note() {
                                             cursor: 'pointer',
                                             padding: '2px 15px 2px 15px',
                                         }}
-                                        onClick={() =>
+                                        onClick={() => {
                                             handleCurrentChange('TOTAL')
-                                        }
+                                            setIsContent(null)
+                                        }}
                                     >
                                         TOTAL
                                     </a>
@@ -85,9 +88,10 @@ export default function Note() {
                                                 cursor: 'pointer',
                                                 padding: '2px 15px 2px 15px',
                                             }}
-                                            onClick={() =>
+                                            onClick={() => {
                                                 handleCurrentChange(tag.tag)
-                                            }
+                                                setIsContent(null)
+                                            }}
                                         >
                                             {`${tag.tag} (${tag.count})`}
                                         </a>
@@ -108,24 +112,31 @@ export default function Note() {
                         </aside>
                     </div>
                     <div className="column">
-                        {(currentTag === 'TOTAL'
-                            ? noteList
-                            : noteList.filter(
-                                  (row) =>
-                                      row.tags.filter(
-                                          (r) => r.tag === currentTag
-                                      ).length > 0
-                              )
-                        ).map((row) => (
-                            <div
-                                style={{
-                                    margin: '20px auto',
-                                    width: '70%',
-                                }}
-                            >
-                                <Card noteList={row} />
-                            </div>
-                        ))}
+                        {!isContent ? (
+                            (currentTag === 'TOTAL'
+                                ? noteList
+                                : noteList.filter(
+                                      (row) =>
+                                          row.tags.filter(
+                                              (r) => r.tag === currentTag
+                                          ).length > 0
+                                  )
+                            ).map((row) => (
+                                <div
+                                    style={{
+                                        margin: '20px auto',
+                                        width: '70%',
+                                    }}
+                                >
+                                    <Card
+                                        note={row}
+                                        setIsContent={setIsContent}
+                                    />
+                                </div>
+                            ))
+                        ) : (
+                            <NoteContent note={isContent} />
+                        )}
                     </div>
                 </div>
             </div>
