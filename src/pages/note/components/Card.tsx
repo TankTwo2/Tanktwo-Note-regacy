@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { NoteDto } from '../note'
 
 export default function Card({
@@ -10,8 +11,9 @@ export default function Card({
 }) {
     return (
         <>
-            <div
+            <Link
                 className="card"
+                to={{ pathName: '/ttb_frontend/noteContent', state: note }}
                 onClick={() => setIsContent(note)}
                 style={{ cursor: 'pointer' }}
             >
@@ -20,7 +22,7 @@ export default function Card({
                     <p style={{ margin: 10 }}>
                         {note &&
                             note.tags.map((row) => (
-                                <small>
+                                <small key={row.id}>
                                     <a href={`#${row.tag}`}>#{row.tag}</a>&nbsp;
                                 </small>
                             ))}
@@ -28,7 +30,7 @@ export default function Card({
                     <br />
                     <p style={{ margin: 10 }}>{note.modifiedAt.slice(0, 10)}</p>
                 </header>
-            </div>
+            </Link>
         </>
     )
 }
