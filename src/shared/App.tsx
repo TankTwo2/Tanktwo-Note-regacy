@@ -4,7 +4,7 @@ import './App.css'
 import Note from '../pages/note/note'
 import Home from '../pages/home'
 import Nav from '../layout/nav'
-import NoteContent from '../pages/note/components/NoteContent'
+import NoteContent from '../pages/note/NoteContent'
 export const baseUrl = process.env.REACT_APP_API_URL
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
                 <Route exact path="/ttb_frontend/note" component={Note} />
                 <Route
                     exact
-                    path="/ttb_frontend/noteContent"
+                    path="/ttb_frontend/noteContent/:id"
                     component={NoteContent}
                 />
             </div>

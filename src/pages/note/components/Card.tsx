@@ -4,17 +4,21 @@ import { NoteDto } from '../note'
 
 export default function Card({
     note,
-    setIsContent,
+    currentTag,
+    setCurrentTag,
 }: {
     note: NoteDto
-    setIsContent: React.Dispatch<React.SetStateAction<NoteDto | null>>
+    currentTag: string
+    setCurrentTag: React.Dispatch<React.SetStateAction<string>>
 }) {
     return (
         <>
             <Link
                 className="card"
-                to={{ pathname: '/ttb_frontend/noteContent', state: note }}
-                onClick={() => setIsContent(note)}
+                to={{
+                    pathname: `/ttb_frontend/noteContent/${note.postNumber}`,
+                    state: note,
+                }}
                 style={{ cursor: 'pointer' }}
             >
                 <header className="card-header">

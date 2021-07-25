@@ -12,14 +12,10 @@ export default function NoteMenu({
     children,
     currentTag,
     setCurrentTag,
-    isContent,
-    setIsContent,
 }: {
     children: any
     currentTag: string
     setCurrentTag: React.Dispatch<React.SetStateAction<string>>
-    isContent: NoteDto | null
-    setIsContent: React.Dispatch<React.SetStateAction<NoteDto | null>>
 }) {
     const [tagList, setTagList] = useState<TagDto[]>([])
     const [openWrite, setOpenWrite] = useState<boolean>(false)
@@ -63,7 +59,6 @@ export default function NoteMenu({
                                         }}
                                         onClick={() => {
                                             handleCurrentChange('TOTAL')
-                                            setIsContent(null)
                                         }}
                                     >
                                         TOTAL
@@ -83,7 +78,6 @@ export default function NoteMenu({
                                             }}
                                             onClick={() => {
                                                 handleCurrentChange(tag.tag)
-                                                setIsContent(null)
                                             }}
                                         >
                                             {`${tag.tag} (${tag.count})`}

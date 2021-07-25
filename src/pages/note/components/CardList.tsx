@@ -6,13 +6,9 @@ import Card from './Card'
 export default function CardList({
     currentTag,
     setCurrentTag,
-    isContent,
-    setIsContent,
 }: {
     currentTag: string
     setCurrentTag: React.Dispatch<React.SetStateAction<string>>
-    isContent: NoteDto | null
-    setIsContent: React.Dispatch<React.SetStateAction<NoteDto | null>>
 }) {
     const [noteList, setNoteList] = useState<NoteDto[]>([])
 
@@ -44,7 +40,11 @@ export default function CardList({
                     }}
                     key={row.postNumber}
                 >
-                    <Card note={row} setIsContent={setIsContent} />
+                    <Card
+                        note={row}
+                        currentTag={currentTag}
+                        setCurrentTag={setCurrentTag}
+                    />
                 </div>
             ))}
         </>

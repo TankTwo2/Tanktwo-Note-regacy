@@ -13,20 +13,15 @@ export interface NoteDto {
 
 export default function Note() {
     const [currentTag, setCurrentTag] = useState<string>('TOTAL')
-    const [isContent, setIsContent] = useState<NoteDto | null>(null)
 
     return (
         <NoteMenu
             currentTag={currentTag}
             setCurrentTag={setCurrentTag}
-            isContent={isContent}
-            setIsContent={setIsContent}
         >
             <CardList
                 currentTag={currentTag}
                 setCurrentTag={setCurrentTag}
-                isContent={isContent}
-                setIsContent={setIsContent}
             />
         </NoteMenu>
     )
