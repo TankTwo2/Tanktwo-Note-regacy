@@ -13,7 +13,7 @@ export default function Card({
         <>
             <Link
                 className="card"
-                to={{ pathName: '/ttb_frontend/noteContent', state: note }}
+                to={{ pathname: '/ttb_frontend/noteContent', state: note }}
                 onClick={() => setIsContent(note)}
                 style={{ cursor: 'pointer' }}
             >
