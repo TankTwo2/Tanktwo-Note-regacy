@@ -17,7 +17,6 @@ export default function Card({
                 className="card"
                 to={{
                     pathname: `/ttb_frontend/noteContent/${note.postNumber}`,
-                    state: note,
                 }}
                 style={{ cursor: 'pointer' }}
             >

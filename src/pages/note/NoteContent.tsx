@@ -9,7 +9,7 @@ export default function NoteContent(
 ) {
     const [noteData, setNoteData] = useState<NoteDto>({} as NoteDto)
 
-    const getNoteListCB = useCallback(getNoteList, [])
+    const getNoteListCB = useCallback(getNoteList, [props.match.params.id])
     async function getNoteList() {
         setNoteData(
             await cFetch(
@@ -32,10 +32,10 @@ export default function NoteContent(
 
     return (
         // <NoteMenu>
-            <div>
-                <div className="header">{noteData.title}</div>
-                <div className="inner-html" />
-            </div>
+        <div>
+            <div className="header">{noteData.title}</div>
+            <div className="inner-html" />
+        </div>
         // </NoteMenu>
     )
 }

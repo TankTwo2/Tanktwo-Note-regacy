@@ -1,14 +1,13 @@
 import React, { useState, useCallback, useEffect } from 'react'
 import cFetch from '../../../shared/fetch'
 import WriteNote from './WriteNote'
-import { NoteDto } from '../note'
 
 interface TagDto {
     tag: string
     count: string
 }
 
-export default function NoteMenu({
+const NoteMenu = ({
     children,
     currentTag,
     setCurrentTag,
@@ -16,7 +15,7 @@ export default function NoteMenu({
     children: any
     currentTag: string
     setCurrentTag: React.Dispatch<React.SetStateAction<string>>
-}) {
+}) => {
     const [tagList, setTagList] = useState<TagDto[]>([])
     const [openWrite, setOpenWrite] = useState<boolean>(false)
 
@@ -104,3 +103,5 @@ export default function NoteMenu({
         </div>
     )
 }
+
+export default NoteMenu

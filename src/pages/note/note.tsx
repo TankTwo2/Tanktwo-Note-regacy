@@ -1,4 +1,4 @@
-import React, {useState } from 'react'
+import React, { useState } from 'react'
 import NoteMenu from './components/NoteMenu'
 import CardList from './components/CardList'
 
@@ -11,18 +11,19 @@ export interface NoteDto {
     title: string
 }
 
+const NoteContext = React.createContext({})
+
 export default function Note() {
     const [currentTag, setCurrentTag] = useState<string>('TOTAL')
 
     return (
-        <NoteMenu
-            currentTag={currentTag}
-            setCurrentTag={setCurrentTag}
-        >
-            <CardList
-                currentTag={currentTag}
-                setCurrentTag={setCurrentTag}
-            />
-        </NoteMenu>
+        <NoteContext.Provider value={{ currentTag, setCurrentTag }}>
+            <NoteMenu currentTag={currentTag} setCurrentTag={setCurrentTag}>
+                <CardList
+                    currentTag={currentTag}
+                    setCurrentTag={setCurrentTag}
+                />
+            </NoteMenu>
+        </NoteContext.Provider>
     )
 }
