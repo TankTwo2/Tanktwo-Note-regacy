@@ -10,6 +10,10 @@ export class NoteService {
     private noteRepository: Repository<Note>,
   ) {}
 
+  getNote(id: number): Promise<Note> {
+    return this.noteRepository.findOne({ postNumber: id });
+  }
+
   getNotes(): Promise<Note[]> {
     return this.noteRepository.find({ relations: ['tags'] });
   }

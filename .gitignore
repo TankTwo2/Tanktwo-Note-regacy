@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 /ttb-frontend/node_modules
+/ttb-backend/node_modules
 
 # testing
 /coverage
@@ -24,6 +25,7 @@ yarn-debug.log*
 yarn-error.log*
 # compiled output
 /dist
+/ttb-backend/dist
 
 # Logs
 logs
