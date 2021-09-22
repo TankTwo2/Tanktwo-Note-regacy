@@ -26,6 +26,7 @@ yarn-error.log*
 # compiled output
 /dist
 /ttb-backend/dist
+/ttb-frontend/build
 
 # Logs
 logs
