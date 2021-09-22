@@ -14,7 +14,7 @@ const env = process.env.NODE_ENV;
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: '.env',
-      ignoreEnvFile: env === 'prod',
+      // ignoreEnvFile: env === 'prod',
     }),
     TypeOrmModule.forRoot({
       type: 'mysql',
