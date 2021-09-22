@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 import { NoteDto } from './note'
 import cFetch from '../../shared/fetch'
-import NoteMenu from './components/NoteMenu'
 
 export default function NoteContent(
     props: RouteComponentProps<{ id?: string }>
